@@ -21,3 +21,4 @@ routes = {
     '/tuning/': Tuning(),
     '/contact/': Contact(),
 }
+

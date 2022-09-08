@@ -1,5 +1,5 @@
-from jinja2 import Template
 from os.path import join
+from jinja2 import Template
 
 
 def render(template_name, folder='templates', **kwargs):
@@ -16,4 +16,3 @@ def render(template_name, folder='templates', **kwargs):
         template = Template(f.read())
     # рендерим шаблон с параметрами
     return template.render(**kwargs)
-

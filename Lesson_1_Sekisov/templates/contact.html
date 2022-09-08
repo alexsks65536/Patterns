@@ -372,7 +372,7 @@ table tr td
             <!-- insert your sidebar items here -->
             <h3>Контакты</h3>
             <h4>Автотюнинг</h4>
-            <h5>Сентябрь, 2022</h5>
+            <h5>{{date}}</h5>
             <p>Наш магазин предлагает широкий спектр автозапчастей для автомобилей иностранного и отечественного производства.<br /><a href="#">Читать далее...</a></p>
           </div>
           <div class="sidebar_base"></div>
@@ -408,13 +408,26 @@ table tr td
         <!-- insert the page content here -->
         <h1>Наши контакты:</h1>
         <p>Напишите ваш вопрос и мы ответим вам в течение 15 минут!</p>
+        <form method="post" action="#">
           <div class="form_settings">
-            <p><span>Имя</span><input class="contact" type="text" name="your_name" value="" /></p>
-            <p><span>Адрес E-mail</span><input class="contact" type="text" name="your_email" value="" /></p>
-            <p><span>Сообщение</span><textarea class="contact textarea" rows="8" cols="50" name="your_enquiry"></textarea></p>
-            <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="contact_submitted" value="Отправить" /></p>
-          </div>       
-        <p><br /><br />ПРИМЕЧАНИЕ. Контактная форма, подобная этой, потребует отправки ввода по электронной почте на адрес электронной почты.</p>
+            <p><span>Имя</span>
+              <input class="contact" type="text" name="your_name" value="" />
+            </p>
+            <p><span>Адрес E-mail</span>
+              <input class="contact" type="text" name="your_email" value="" />
+            </p>
+            <p><span>Сообщение</span>
+              <textarea class="contact textarea" rows="8" cols="50" name="your_enquiry"></textarea>
+            </p>
+            <p style="padding-top: 15px">
+              <span>&nbsp;</span>
+              <input class="submit" type="submit" name="contact_submitted" value="Отправить" />
+            </p>
+          </div>
+        </form>
+        <p><br /><br />
+          ПРИМЕЧАНИЕ. Контактная форма, подобная этой, потребует отправки ввода по электронной почте на адрес электронной почты.
+        </p>
       </div>
     </div>
     <div id="content_footer"></div>

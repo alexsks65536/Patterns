@@ -5,8 +5,9 @@
 {% block style %}
 	{% include "inc_style.html" %}
 {% endblock %}
+{% set selected_index = "selected" %}  <!-- передача переменной для подсвечивания меню-->
 {% block menu %}
-	{% include "inc_top_menu.html" %}
+	{% include "inc_top_menu.html"  %}
 {% endblock %}
 {% block right_menu %}
 	{% include "inc_right_menu.html" %}

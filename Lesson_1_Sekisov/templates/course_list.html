@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}
+	Магазин АвтоТюнинг
+{% endblock %}
+{% block style %}
+	{% include "inc_style.html" %}
+{% endblock %}
+{% set selected_index = "selected" %}  <!-- передача переменной для подсвечивания меню-->
+{% set title_right_menu = "Запасные части для кузова и ходовой"%}  <!-- в правое меню заголовок -->
+{% set title_right_menu2 = "Элементы подвески и комплектующие для кузова"%}  <!-- в правое меню заголовок -->
+{% block menu %}
+	{% include "inc_top_menu.html" %}
+{% endblock %}
+{% block right_menu %}
+	{% include "inc_right_menu.html" %}
+{% endblock %}
+{% block body %}
+	<div>
+        <a href="/">назад на главную</a>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+        <a href="/create-course/?id={{id}}">Создать новый курс</a>
+        <br>
+        <h1>Список курсов для категории "{{name}}"</h1>
+        {% for item in objects_list %}
+        <li>
+            {{item.name}} <span><a href="/copy-course/?name={{item.name}}">скопировать</a></span>
+        </li>
+        {% endfor %}
+    </div>
+
+{% endblock %}

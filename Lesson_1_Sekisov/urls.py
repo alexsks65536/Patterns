@@ -1,5 +1,6 @@
 from datetime import date
-from views import Index, Chassis, Engine, Tuning, Contact
+from views import Index, Chassis, Engine, Tuning, Contact, CoursesList, \
+    CreateCourse, CreateCategory, CategoryList, CopyCourse
 
 
 # front controller
@@ -20,5 +21,10 @@ routes = {
     '/engine/': Engine(),
     '/tuning/': Tuning(),
     '/contact/': Contact(),
+    '/courses-list/': CoursesList(),
+    '/create-course/': CreateCourse(),
+    '/create-category/': CreateCategory(),
+    '/category-list/': CategoryList(),
+    '/copy-course/': CopyCourse()
 }
 

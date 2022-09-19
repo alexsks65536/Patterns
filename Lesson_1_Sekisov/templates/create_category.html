@@ -5,7 +5,7 @@
 {% block style %}
 	{% include "inc_style.html" %}
 {% endblock %}
-{% set selected_chassis = "selected" %}  <!-- передача переменной для подсвечивания меню-->
+{% set selected_index = "selected" %}  <!-- передача переменной для подсвечивания меню-->
 {% set title_right_menu = "Запасные части для кузова и ходовой"%}  <!-- в правое меню заголовок -->
 {% set title_right_menu2 = "Элементы подвески и комплектующие для кузова"%}  <!-- в правое меню заголовок -->
 {% block menu %}
@@ -15,8 +15,10 @@
 	{% include "inc_right_menu.html" %}
 {% endblock %}
 {% block body %}
-	{% include "inc_chassis.html" %}
-{% endblock %}
-{% block footer %}
-	{% include "inc_footer.html" %}
+<h1>Создание категории</h1>
+<form method="post">
+    <input type="text" name="name" placeholder="Название">
+    <button type="submit">Сохранить и вернуться на главную</button>
+</form>
+
 {% endblock %}

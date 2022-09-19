@@ -1,5 +1,4 @@
 from datetime import date
-from views import Index, Chassis, Engine, Tuning, Contact
 
 
 # front controller
@@ -13,11 +12,4 @@ def other_front(request):
 
 fronts = [secret_front, other_front]
 
-routes = {
-    '/': Index(),
-    '/index/': Index(),
-    '/chassis/': Chassis(),
-    '/engine/': Engine(),
-    '/tuning/': Tuning(),
-    '/contact/': Contact(),
-}
+

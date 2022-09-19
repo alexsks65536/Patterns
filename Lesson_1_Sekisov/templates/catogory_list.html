@@ -6,7 +6,6 @@
 {% set selected_chassis = "selected" %}  <!-- передача переменной для подсвечивания меню-->
 {% set title_right_menu = "Запасные части для кузова и ходовой"%}  <!-- в правое меню заголовок -->
 {% set title_right_menu2 = "Элементы подвески и комплектующие для кузова"%}  <!-- в правое меню заголовок -->
-{% set banner = "banner_chassis.png" %}
 {% block menu %}
 	{% include "inc_top_menu.html" %}
 {% endblock %}
@@ -14,7 +13,22 @@
 	{% include "inc_right_menu.html" %}
 {% endblock %}
 {% block body %}
-	{% include "inc_chassis.html" %}
+    <a href="/">назад</a>
+
+    <h1>Список категорий</h1>
+    <ul>
+
+        {% for item in objects_list %}
+        <li>
+            {{item.name}} <span>Количество курсов: {{item.course_count()}}</span>
+        </li>
+        {% endfor %}
+    </ul>
+
+	<div>
+		<li><a href="/courses-list/">Список курсов</a></li>
+		<li><a href="/create-course/">Создать курс</a></li>
+	</div>
 {% endblock %}
 {% block footer %}
 	{% include "inc_footer.html" %}

@@ -2,48 +2,105 @@ from datetime import date
 
 from simba_framework.templator import render
 from patterns.сreational_patterns import Engine, Logger
+from patterns.structural_patterns import AppRoute, Debug
 
 site = Engine()
 logger = Logger('main')
 
+routes = {}
+
 
 # контроллер - главная страница
+@AppRoute(routes=routes, url='/')
 class Index:
+    @Debug(name='Index')
     def __call__(self, request):
-        return '200 OK', render('index.html', date=request.get('date', None))
+        return '200 OK', render('index.html', objects_list=site.categories)
+
+
+@AppRoute(routes=routes, url='/index/')
+class Index:
+    @Debug(name='Index')
+    def __call__(self, request):
+        return '200 OK', render('index.html', objects_list=site.categories)
+
+
+@AppRoute(routes=routes, url='/create-category/index/')
+class Index:
+    @Debug(name='Index')
+    def __call__(self, request):
+        return '200 OK', render('index.html', objects_list=site.categories)
 
 
 # контроллер "Элементы шасси"
+@AppRoute(routes=routes, url='/chassis/')
 class Chassis:
+    @Debug(name='Chassis')
     def __call__(self, request):
-        return '200 OK', render('chassis.html', date=request.get('date', None))
+        return '200 OK', render('chassis.html', objects_list=site.categories)
+
+
+@AppRoute(routes=routes, url='/create-category/chassis/')
+class Chassis:
+    @Debug(name='Chassis')
+    def __call__(self, request):
+        return '200 OK', render('chassis.html', objects_list=site.categories)
 
 
 # контроллер "Элементы двигателя"
+@AppRoute(routes=routes, url='/engine/')
 class Engine:
+    @Debug(name='Engine')
     def __call__(self, request):
-        return '200 OK', render('engine.html', date=request.get('date', None))
+        return '200 OK', render('engine.html', objects_list=site.categories)
+
+
+@AppRoute(routes=routes, url='/create-category/engine/')
+class Engine:
+    @Debug(name='Engine')
+    def __call__(self, request):
+        return '200 OK', render('engine.html', objects_list=site.categories)
 
 
 # контроллер "Тюнинг"
+@AppRoute(routes=routes, url='/tuning/')
 class Tuning:
+    @Debug(name='Index')
     def __call__(self, request):
-        return '200 OK', render('tuning.html', date=request.get('date', None))
+        return '200 OK', render('tuning.html', objects_list=site.categories)
+
+
+@AppRoute(routes=routes, url='/create-category/tuning/')
+class Tuning:
+    @Debug(name='Index')
+    def __call__(self, request):
+        return '200 OK', render('tuning.html', objects_list=site.categories)
 
 
 # контроллер "Контакты"
+@AppRoute(routes=routes, url='/contact/')
 class Contact:
+    @Debug(name='Index')
     def __call__(self, request):
-        return '200 OK', render('contact.html', date=request.get('date', None))
+        return '200 OK', render('contact.html', objects_list=site.categories)
+
+
+@AppRoute(routes=routes, url='/create-category/contact/')
+class Contact:
+    @Debug(name='Index')
+    def __call__(self, request):
+        return '200 OK', render('contact.html', objects_list=site.categories)
 
 
 # контроллер 404
 class NotFound404:
+    @Debug(name='NotFound404')
     def __call__(self, request):
         return '404 WHAT', '404 PAGE Not Found'
 
 
 # контроллер - список курсов
+@AppRoute(routes=routes, url='/courses-list/')
 class CoursesList:
     def __call__(self, request):
         logger.log('Список курсов')
@@ -58,6 +115,7 @@ class CoursesList:
 
 
 # контроллер - создать курс
+@AppRoute(routes=routes, url='/create-course/')
 class CreateCourse:
     category_id = -1
 
@@ -94,6 +152,7 @@ class CreateCourse:
 
 
 # контроллер - создать категорию
+@AppRoute(routes=routes, url='/create-category/')
 class CreateCategory:
     def __call__(self, request):
 
@@ -123,6 +182,7 @@ class CreateCategory:
 
 
 # контроллер - список категорий
+@AppRoute(routes=routes, url='/category-list/')
 class CategoryList:
     def __call__(self, request):
         logger.log('Список категорий')
@@ -131,6 +191,7 @@ class CategoryList:
 
 
 # контроллер - копировать курс
+@AppRoute(routes=routes, url='/copy-course/')
 class CopyCourse:
     def __call__(self, request):
         request_params = request['request_params']

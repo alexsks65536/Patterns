@@ -2,12 +2,11 @@
 {% block title %}
 	Магазин АвтоТюнинг
 {% endblock %}
-{% block style %}
-	{% include "inc_style.html" %}
-{% endblock %}
+
 {% set selected_engine = "selected" %}  <!-- передача переменной для подсвечивания меню-->
 {% set title_right_menu = "Запасные части двигателя"%}  <!-- в правое меню заголовок -->
 {% set title_right_menu2 = "Запчасти и комплектующие для двигателя"%}  <!-- в правое меню заголовок -->
+{% set banner = "banner_engine.png" %}
 {% block menu %}
 	{% include "inc_top_menu.html" %}
 {% endblock %}

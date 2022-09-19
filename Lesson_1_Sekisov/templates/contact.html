@@ -2,12 +2,11 @@
 {% block title %}
 	Магазин АвтоТюнинг
 {% endblock %}
-{% block style %}
-	{% include "inc_style.html" %}
-{% endblock %}
+
 {% set selected_contact = "selected" %}  <!-- передача переменной для подсвечивания меню-->
 {% set title_right_menu = "Контакты"%}  <!-- в правое меню заголовок -->
 {% set title_right_menu2 = "Адреса и телефоны компании"%}  <!-- в правое меню заголовок -->
+{% set banner = "banner_car1.png" %}
 {% block menu %}
 	{% include "inc_top_menu.html" %}
 {% endblock %}

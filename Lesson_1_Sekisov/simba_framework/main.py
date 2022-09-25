@@ -1,5 +1,6 @@
 import quopri
 from os import path
+import operator
 
 from simba_framework.requesting import GetRequests, PostRequests
 from components.content_types import CONTENT_TYPES_MAP
@@ -25,6 +26,17 @@ class Framework:
         # Добавляем закрывающий слеш
         if not path.endswith('/'):
             path = f'{path}/'
+        if 'index' in path:
+            path = f'/index/'
+        if 'chassis' in path:
+            path = f'/chassis/'
+        if 'engine' in path:
+            path = f'/engine/'
+        if 'tuning' in path:
+            path = f'/tuning/'
+        if 'contact' in path:
+            path = f'/contact/'
+
 
         request = {}
         # Получаем все данные запроса

@@ -27,43 +27,8 @@ class Index:
         return '200 OK', render('index.html', objects_list=site.categories)
 
 
-@AppRoute(routes=routes, url='/create-category/index/')
-class Index:
-    @Debug(name='Index')
-    def __call__(self, request):
-        return '200 OK', render('index.html', objects_list=site.categories)
-
-
-@AppRoute(routes=routes, url='/student-list/index/')
-class Index:
-    @Debug(name='Index')
-    def __call__(self, request):
-        return '200 OK', render('index.html', objects_list=site.categories)
-
-
-@AppRoute(routes=routes, url='/add-student/index/')
-class Index:
-    @Debug(name='Index')
-    def __call__(self, request):
-        return '200 OK', render('index.html', objects_list=site.categories)
-
-
-@AppRoute(routes=routes, url='/create-student/index/')
-class Index:
-    @Debug(name='Index')
-    def __call__(self, request):
-        return '200 OK', render('index.html', objects_list=site.categories)
-
-
 # контроллер "Элементы шасси"
 @AppRoute(routes=routes, url='/chassis/')
-class Chassis:
-    @Debug(name='Chassis')
-    def __call__(self, request):
-        return '200 OK', render('chassis.html', objects_list=site.categories)
-
-
-@AppRoute(routes=routes, url='/create-category/chassis/')
 class Chassis:
     @Debug(name='Chassis')
     def __call__(self, request):
@@ -78,13 +43,6 @@ class Engine:
         return '200 OK', render('engine.html', objects_list=site.categories)
 
 
-@AppRoute(routes=routes, url='/create-category/engine/')
-class Engine:
-    @Debug(name='Engine')
-    def __call__(self, request):
-        return '200 OK', render('engine.html', objects_list=site.categories)
-
-
 # контроллер "Тюнинг"
 @AppRoute(routes=routes, url='/tuning/')
 class Tuning:
@@ -93,22 +51,8 @@ class Tuning:
         return '200 OK', render('tuning.html', objects_list=site.categories)
 
 
-@AppRoute(routes=routes, url='/create-category/tuning/')
-class Tuning:
-    @Debug(name='Index')
-    def __call__(self, request):
-        return '200 OK', render('tuning.html', objects_list=site.categories)
-
-
 # контроллер "Контакты"
 @AppRoute(routes=routes, url='/contact/')
-class Contact:
-    @Debug(name='Index')
-    def __call__(self, request):
-        return '200 OK', render('contact.html', objects_list=site.categories)
-
-
-@AppRoute(routes=routes, url='/create-category/contact/')
 class Contact:
     @Debug(name='Index')
     def __call__(self, request):

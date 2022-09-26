@@ -4,16 +4,16 @@ from time import time
 # структурный паттерн - Декоратор
 class AppRoute:
     def __init__(self, routes, url):
-        """
+        '''
         Сохраняем значение переданного параметра
-        """
+        '''
         self.routes = routes
         self.url = url
 
     def __call__(self, cls):
-        """
+        '''
         Сам декоратор
-        """
+        '''
         self.routes[self.url] = cls()
 
 
@@ -25,16 +25,17 @@ class Debug:
         self.name = name
 
     def __call__(self, cls):
-        """
+        '''
         сам декоратор
-        """
+        '''
 
-        # это вспомогательная функция будет декорировать каждый отдельный метод класса, см. ниже
+        # это вспомогательная функция будет декорировать
+        # каждый отдельный метод класса, см. ниже
         def timeit(method):
-            """
+            '''
             нужен для того, чтобы декоратор класса wrapper обернул в timeit
             каждый метод декорируемого класса
-            """
+            '''
             def timed(*args, **kw):
                 ts = time()
                 result = method(*args, **kw)

@@ -2,7 +2,9 @@
 {% block title %}
 Создание курса
 {% endblock %}
-
+{% block style %}
+	{% include "inc_style.html" %}
+{% endblock %}
 {% set selected_index = "selected" %}  <!-- передача переменной для подсвечивания меню-->
 {% set title_right_menu = "Запасные части двигателя"%}  <!-- в правое меню заголовок -->
 {% set title_right_menu2 = "Запчасти и комплектующие для двигателя"%}  <!-- в правое меню заголовок -->
@@ -39,7 +41,4 @@
 	<br>
 	<br>
 	<br>
-{% endblock %}
-{% block footer %}
-	{% include "inc_footer.html" %}
 {% endblock %}

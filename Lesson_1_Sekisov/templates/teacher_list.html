@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}
+Создание преподавателя
+{% endblock %}
+{% block style %}
+	{% include "inc_style.html" %}
+{% endblock %}
+{% set selected_index = "selected" %}  <!-- передача переменной для подсвечивания меню-->
+{% set title_right_menu = "Запасные части двигателя"%}  <!-- в правое меню заголовок -->
+{% set title_right_menu2 = "Запчасти и комплектующие для двигателя"%}  <!-- в правое меню заголовок -->
+
+{% block menu %}
+	{% include "inc_top_menu.html" %}
+{% endblock %}
+{% block right_menu %}
+	{% include "inc_right_menu.html" %}
+{% endblock %}
+{% block body %}
+	<div>
+		<li>
+			<a href="/create-teacher/">Создать преподавателя</a>
+		</li>
+		<li>
+			<a href="/add-teacher/">Добавить преподавателя на курс</a>
+		</li>
+	</div>
+    <h1>Список преподавателей</h1>
+    <div>
+
+        {% for item in objects_list %}
+        <li>
+            {{item.name}}
+            {% for course in item.courses %}
+                {{course.name}}
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </div>
+	<br>
+	<br>
+	<br>
+{% endblock %}

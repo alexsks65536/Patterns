@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+Создание Преподавателя
+{% endblock %}
+{% block style %}
+	{% include "inc_style.html" %}
+{% endblock %}
+{% set selected_index = "selected" %}  <!-- передача переменной для подсвечивания меню-->
+{% set title_right_menu = "Запасные части двигателя"%}  <!-- в правое меню заголовок -->
+{% set title_right_menu2 = "Запчасти и комплектующие для двигателя"%}  <!-- в правое меню заголовок -->
+{% set banner = "banner_engine.png" %}
+{% block menu %}
+	{% include "inc_top_menu.html" %}
+{% endblock %}
+{% block right_menu %}
+	{% include "inc_right_menu.html" %}
+{% endblock %}
+{% block body %}
+	<div>
+		<li>
+			<a href="/student-list/">Список преподавателей</a>
+		</li>
+	</div>
+    <div>
+        <h1>Создание преподавателя</h1>
+        <form method="post">
+            <input type="text" name="name" placeholder="Имя">
+            <button type="submit">Сохранить</button>
+        </form>
+    </div>
+	<br>
+	<br>
+	<br>
+{% endblock %}

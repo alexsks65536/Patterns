@@ -4,6 +4,7 @@ from simba_framework.main import Framework
 from urls import fronts
 from views import routes
 
+
 application = Framework(routes, fronts)
 
 with make_server('', 8080, application) as httpd:

@@ -84,7 +84,6 @@ class ListView(TemplateView):
 
 
 class CreateView(TemplateView):
-    template_name = 'create.html'
 
     @staticmethod
     def get_request_data(request):

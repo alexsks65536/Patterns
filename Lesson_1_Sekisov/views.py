@@ -129,33 +129,33 @@ class CreateCourse:
 
 
 # контроллер - создать категорию
-@AppRoute(routes=routes, url='/create-category/')
-class CreateCategory:
-    def __call__(self, request):
-
-        if request['method'] == 'POST':
-            # метод пост
-
-            data = request['data']
-
-            name = data['name']
-            name = site.decode_value(name)
-
-            category_id = data.get('category_id')
-
-            category = None
-            if category_id:
-                category = site.find_category_by_id(int(category_id))
-
-            new_category = site.create_category(name, category)
-
-            site.categories.append(new_category)
-
-            return status_ok, render('index.html', objects_list=site.categories)
-        else:
-            categories = site.categories
-            return status_ok, render('create_category.html',
-                                     categories=categories)
+# @AppRoute(routes=routes, url='/create-category/')
+# class CreateCategory:
+#     def __call__(self, request):
+#
+#         if request['method'] == 'POST':
+#             # метод пост
+#
+#             data = request['data']
+#
+#             name = data['name']
+#             name = site.decode_value(name)
+#
+#             category_id = data.get('category_id')
+#
+#             category = None
+#             if category_id:
+#                 category = site.find_category_by_id(int(category_id))
+#
+#             new_category = site.create_category(name, category)
+#
+#             site.categories.append(new_category)
+#
+#             return status_ok, render('index.html', objects_list=site.categories)
+#         else:
+#             categories = site.categories
+#             return status_ok, render('create_category.html',
+#                                      categories=categories)
 
 
 # контроллер - список категорий
@@ -167,8 +167,8 @@ class CategoryList:
                                  objects_list=site.categories)
 
 
-@AppRoute(routes=routes, url='/copy-course/')
 # контроллер - копировать курс
+@AppRoute(routes=routes, url='/copy-course/')
 class CopyCourse:
     def __call__(self, request):
         request_params = request['request_params']
@@ -190,6 +190,21 @@ class CopyCourse:
             return status_ok, 'No courses have been added yet'
 
 
+#  контроллер - Создать категорию
+@AppRoute(routes=routes, url='/create-category/')
+class CategoryCreateView(CreateView):
+    template_name = 'create_category.html'
+
+    def create_obj(self, data: dict):
+        name = data['name']
+        name = site.decode_value(name)
+        new_obj = site.create_category('category', name)
+        site.categories.append(new_obj)
+        new_obj.mark_new()
+        UnitOfWork.get_current().commit()
+
+
+#  контроллер - Список студентов
 @AppRoute(routes=routes, url='/student-list/')
 class StudentListView(ListView):
     template_name = 'student_list.html'
@@ -199,6 +214,7 @@ class StudentListView(ListView):
         return mapper.all()
 
 
+#  контроллер - Создать студента
 @AppRoute(routes=routes, url='/create-student/')
 class StudentCreateView(CreateView):
     template_name = 'create_student.html'
@@ -210,6 +226,30 @@ class StudentCreateView(CreateView):
         site.students.append(new_obj)
         new_obj.mark_new()
         UnitOfWork.get_current().commit()
+
+
+#  контроллер - Создать преподавателя
+@AppRoute(routes=routes, url='/create-teacher/')
+class TeacherCreateView(CreateView):
+    template_name = 'create_teacher.html'
+
+    def create_obj(self, data: dict):
+        name = data['name']
+        name = site.decode_value(name)
+        new_obj = site.create_user('teacher', name)
+        site.teachers.append(new_obj)
+        new_obj.mark_new()
+        UnitOfWork.get_current().commit()
+
+
+#  контроллер - Список преподавателей
+@AppRoute(routes=routes, url='/teacher-list/')
+class TeachertListView(ListView):
+    template_name = 'teacher_list.html'
+
+    def get_queryset(self):
+        mapper = MapperRegistry.get_current_mapper('teacher')
+        return mapper.all()
 
 
 @AppRoute(routes=routes, url='/add-student/')

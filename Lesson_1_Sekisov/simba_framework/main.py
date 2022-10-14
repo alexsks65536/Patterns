@@ -1,5 +1,7 @@
 import quopri
+from os import path
 from simba_framework.requesting import GetRequests, PostRequests
+from components.content_types import CONTENT_TYPES_MAP
 
 
 class PageNotFound404:
@@ -8,7 +10,6 @@ class PageNotFound404:
 
 
 class Framework:
-
     """Класс Framework - основа фреймворка"""
 
     def __init__(self, routes_obj, fronts_obj):
@@ -22,6 +23,7 @@ class Framework:
         # добавление закрывающего слеша
         if not path.endswith('/'):
             path = f'{path}/'
+
         # список адресов url
         urls = ['index', 'chassis', 'engine', 'tuning', 'contact']
         # исправляем url, убираем лишнее
@@ -32,7 +34,6 @@ class Framework:
         request = {}
         # Получаем все данные запроса
         method = environ['REQUEST_METHOD']
-
         request['method'] = method
 
         if method == 'POST':
@@ -62,6 +63,21 @@ class Framework:
         code, body = view(request)
         start_response(code, [('Content-Type', 'text/html')])
         return [body.encode('utf-8')]
+
+    @staticmethod
+    def get_content_type(file_path, content_types_map=CONTENT_TYPES_MAP):
+        file_name = path.basename(file_path).lower()  # styles.css
+        extension = path.splitext(file_name)[1]  # .css
+        print(extension)
+        return content_types_map.get(extension, "text/html")
+
+    @staticmethod
+    def get_static(static_dir, file_path):
+        path_to_file = path.join(static_dir, file_path)
+        with open(path_to_file, 'rb') as f:
+            file_content = f.read()
+        status_code = '200 OK'
+        return status_code, file_content
 
     @staticmethod
     def decode_value(data):

@@ -41,7 +41,7 @@ class UserFactory:
     types = {
         'student': Student,
         'teacher': Teacher,
-        'category': Category,
+        # 'category': Category,
     }
 
     # порождающий паттерн Фабричный метод
@@ -95,22 +95,22 @@ class RecordCourse(Course):
 
 
 # Категория
-# class Category:
-#     # реестр?
-#     auto_id = 0
-#
-#     def __init__(self, name, category):
-#         self.id = Category.auto_id
-#         Category.auto_id += 1
-#         self.name = name
-#         self.category = category
-#         self.courses = []
-#
-#     def course_count(self):
-#         result = len(self.courses)
-#         if self.category:
-#             result += self.category.course_count()
-#         return result
+class Category:
+    # реестр?
+    auto_id = 0
+
+    def __init__(self, name, category):
+        self.id = Category.auto_id
+        Category.auto_id += 1
+        self.name = name
+        self.category = category
+        self.courses = []
+
+    def course_count(self):
+        result = len(self.courses)
+        if self.category:
+            result += self.category.course_count()
+        return result
 
 
 # порождающий паттерн Абстрактная фабрика - фабрика курсов
@@ -143,10 +143,10 @@ class Engine:
         return UserFactory.create(type_, name)
 
     @staticmethod
-    # def create_category(name, category=None):
-        # return Category(name, category)
-    def create_category(type_, name):
-        return UserFactory.create(type_, name)
+    def create_category(name, category=None):
+        return Category(name, category)
+    # def create_category(type_, name):
+    #     return UserFactory.create(type_, name)
 
     def find_category_by_id(self, id):
         for item in self.categories:
@@ -378,7 +378,7 @@ class MapperRegistry:
     mappers = {
         'student': StudentMapper,
         'teacher': TeacherMapper,
-        'category': CategoryMapper
+        # 'category': CategoryMapper,
     }
 
     @staticmethod

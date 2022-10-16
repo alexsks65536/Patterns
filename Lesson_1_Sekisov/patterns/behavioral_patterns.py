@@ -47,7 +47,7 @@ class BaseSerializer:
 
 # поведенческий паттерн - Шаблонный метод
 class TemplateView:
-    template_name = 'template.html'
+    template_name = ''
 
     def get_context_data(self):
         return {}
@@ -66,7 +66,7 @@ class TemplateView:
 
 class ListView(TemplateView):
     queryset = []
-    template_name = 'list.html'
+    template_name = ''
     context_object_name = 'objects_list'
 
     def get_queryset(self):

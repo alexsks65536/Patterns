@@ -36,8 +36,20 @@
             <option value="{{item.name}}">{{item.name}}</option>
             {% endfor %}
         </select>
+
         <button type="submit">Записать</button>
     </form>
+    <div>
+        <p>.....</p>
+        {% for item in objects_list %}
+        <li>
+            {{item.name}}
+            {% for course in item.courses %}
+                {{course.name}}
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </div>
 	<br>
 	<br>
 	<br>
